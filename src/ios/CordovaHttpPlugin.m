@@ -91,7 +91,9 @@
     [manager POST:url parameters:parameters progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
         [self setResults: dictionary withTask: task];
-        [dictionary setObject:responseObject forKey:@"data"];
+        if(responseObject){
+            [dictionary setObject:responseObject forKey:@"data"];
+        }
         CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:dictionary];
         [weakSelf.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     } failure:^(NSURLSessionTask *task, NSError *error) {
@@ -119,7 +121,9 @@
     [manager POST:url parameters:parameters progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
         [self setResults: dictionary withTask: task];
-        [dictionary setObject:responseObject forKey:@"data"];
+        if(responseObject){
+            [dictionary setObject:responseObject forKey:@"data"];
+        }
         CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:dictionary];
         [weakSelf.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     } failure:^(NSURLSessionTask *task, NSError *error) {
@@ -175,7 +179,9 @@
     [manager GET:url parameters:parameters progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
         [self setResults: dictionary withTask: task];
-        [dictionary setObject:responseObject forKey:@"data"];
+        if(responseObject){
+            [dictionary setObject:responseObject forKey:@"data"];
+        }
         CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:dictionary];
         [weakSelf.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     } failure:^(NSURLSessionTask *task, NSError *error) {
@@ -202,7 +208,9 @@
     [manager DELETE:url parameters:parameters success:^(NSURLSessionTask *task, id responseObject) {
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
         [self setResults: dictionary withTask: task];
-        [dictionary setObject:responseObject forKey:@"data"];
+        if(responseObject){
+            [dictionary setObject:responseObject forKey:@"data"];
+        }
         CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:dictionary];
         [weakSelf.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     } failure:^(NSURLSessionTask *task, NSError *error) {
